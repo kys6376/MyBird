@@ -1,7 +1,7 @@
+using Mybird;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-namespace Mybird
+namespace MyBird
 {
     public class Player : MonoBehaviour
     {
@@ -13,7 +13,7 @@ namespace Mybird
         private bool keyJump = false;                   //점프 키입력 체크
 
         //회전
-        private Vector3 birdRotatin;
+        private Vector3 birdRotain;
         [SerializeField] private float rotateSpeed = 5f;
 
         //이동
@@ -49,7 +49,7 @@ namespace Mybird
             if (keyJump)
             {
                 JumpBird();
-                keyJump = false;      
+                keyJump = false;
             }
         }
 
@@ -75,10 +75,9 @@ namespace Mybird
         }
 
         //버드 회전
-
         void RotateBird()
         {
-            //up + 30, down -90;
+            //up +30, down -90;
             float degree = 0;
             if (rb2D.velocity.y > 0f)
             {
@@ -89,15 +88,15 @@ namespace Mybird
                 degree = -rotateSpeed;
             }
 
-            float rotationZ = Mathf.Clamp(birdRotatin.z + degree, -90f, 30f);
-            birdRotatin = new Vector3(0f, 0f, rotationZ);
-            transform.eulerAngles = birdRotatin;
+            float rotationZ = Mathf.Clamp(birdRotain.z + degree, -90f, 30f);
+            birdRotain = new Vector3(0f, 0f, rotationZ);
+            transform.eulerAngles = birdRotain;
         }
 
         //버드 이동
         void MoveBird()
         {
-            if(GameManager.IsStart ==false)
+            if (GameManager.IsStart == false)
                 return;
 
             transform.Translate(Vector3.right * Time.deltaTime * moveSpeed, Space.World);
@@ -106,10 +105,10 @@ namespace Mybird
         //버드 대기
         void ReadyBird()
         {
-            if (GameManager.IsStart == false)
+            if (GameManager.IsStart)
                 return;
 
-            //위쪽으로 힘을 주어 위쪽으로 이동
+            //위쪽으로 힘을 주어 제자리에 있기
             if (rb2D.velocity.y < 0f)
             {
                 rb2D.velocity = Vector2.up * readyForce;
