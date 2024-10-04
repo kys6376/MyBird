@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Mybird
+namespace MyBird
 {
     public class CameraController : MonoBehaviour
     {

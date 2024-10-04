@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Mybird
+namespace MyBird
 {
     public class GroundMove : MonoBehaviour
     {
@@ -11,6 +11,9 @@ namespace Mybird
         // Update is called once per frame
         void Update()
         {
+            if (GameManager.IsDeath == true)
+                return;
+
             MoveGround();
         }
 
